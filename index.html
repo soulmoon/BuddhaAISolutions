@@ -1,0 +1,1059 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Buddha AI Solutions — WhatsApp AI Bots for Business</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,300;0,400;0,700;0,900;1,300;1,700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #0f1b3d;
+    --navy-mid: #1a2d5a;
+    --coral: #ff5c4d;
+    --gold: #f0c060;
+    --teal: #00c9a7;
+    --white: #ffffff;
+    --off-white: #f8f6f1;
+    --gray: #8892a4;
+    --light: #eef1f8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--navy);
+    color: var(--white);
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    padding: 1.2rem 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(15,27,61,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .logo {
+    font-family: 'Fraunces', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .logo-dot {
+    width: 8px; height: 8px;
+    background: var(--coral);
+    border-radius: 50%;
+    display: inline-block;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--white); }
+
+  .nav-cta {
+    background: var(--coral) !important;
+    color: var(--white) !important;
+    padding: 0.6rem 1.4rem;
+    border-radius: 6px;
+    font-weight: 600 !important;
+    transition: opacity 0.2s !important;
+  }
+
+  .nav-cta:hover { opacity: 0.85; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 6% 4rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 70% 50%, rgba(0,201,167,0.08) 0%, transparent 60%),
+                radial-gradient(ellipse at 20% 80%, rgba(255,92,77,0.08) 0%, transparent 50%);
+  }
+
+  .hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 680px;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(0,201,167,0.12);
+    border: 1px solid rgba(0,201,167,0.25);
+    color: var(--teal);
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    animation: fadeUp 0.6s ease both;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  h1 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    font-weight: 900;
+    line-height: 1.05;
+    margin-bottom: 1.5rem;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  h1 em {
+    font-style: italic;
+    color: var(--coral);
+  }
+
+  .hero-sub {
+    font-size: 1.15rem;
+    color: rgba(255,255,255,0.65);
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+    max-width: 520px;
+    font-weight: 300;
+    animation: fadeUp 0.6s 0.2s ease both;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    animation: fadeUp 0.6s 0.3s ease both;
+  }
+
+  .btn-primary {
+    background: var(--coral);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    box-shadow: 0 4px 20px rgba(255,92,77,0.3);
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(255,92,77,0.4);
+  }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.06);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.95rem;
+    text-decoration: none;
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: background 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+  /* Chat mockup */
+  .hero-visual {
+    position: absolute;
+    right: 6%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 340px;
+    animation: fadeUp 0.8s 0.4s ease both;
+  }
+
+  .chat-window {
+    background: #1a1a2e;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  }
+
+  .chat-header {
+    background: #075e54;
+    padding: 1rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .chat-avatar {
+    width: 38px; height: 38px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+
+  .chat-name { font-weight: 600; font-size: 0.9rem; }
+  .chat-status { font-size: 0.75rem; color: rgba(255,255,255,0.7); }
+
+  .chat-body { padding: 1rem; display: flex; flex-direction: column; gap: 0.6rem; background: #0d1117; }
+
+  .msg {
+    max-width: 85%;
+    padding: 0.6rem 0.9rem;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    line-height: 1.5;
+    animation: msgIn 0.4s ease both;
+  }
+
+  .msg-bot {
+    background: #1e3a34;
+    color: rgba(255,255,255,0.9);
+    border-bottom-left-radius: 3px;
+    align-self: flex-start;
+  }
+
+  .msg-user {
+    background: #005c4b;
+    color: rgba(255,255,255,0.9);
+    border-bottom-right-radius: 3px;
+    align-self: flex-end;
+  }
+
+  .msg:nth-child(1) { animation-delay: 0.8s; opacity: 0; animation-fill-mode: forwards; }
+  .msg:nth-child(2) { animation-delay: 1.2s; opacity: 0; animation-fill-mode: forwards; }
+  .msg:nth-child(3) { animation-delay: 1.6s; opacity: 0; animation-fill-mode: forwards; }
+  .msg:nth-child(4) { animation-delay: 2.0s; opacity: 0; animation-fill-mode: forwards; }
+  .msg:nth-child(5) { animation-delay: 2.4s; opacity: 0; animation-fill-mode: forwards; }
+
+  @keyframes msgIn {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .msg-time { font-size: 0.65rem; color: rgba(255,255,255,0.4); text-align: right; margin-top: 0.2rem; }
+
+  /* ── STATS ── */
+  .stats {
+    background: var(--navy-mid);
+    padding: 3rem 6%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .stat { text-align: center; }
+
+  .stat-num {
+    font-family: 'Fraunces', serif;
+    font-size: 2.8rem;
+    font-weight: 900;
+    color: var(--coral);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+
+  .stat-label { font-size: 0.85rem; color: var(--gray); font-weight: 400; }
+
+  /* ── SECTIONS ── */
+  section { padding: 6rem 6%; }
+
+  .section-label {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 800;
+    line-height: 1.15;
+    margin-bottom: 1.2rem;
+  }
+
+  .section-sub {
+    color: var(--gray);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 560px;
+    font-weight: 300;
+  }
+
+  /* ── HOW IT WORKS ── */
+  .how { background: var(--navy); }
+
+  .how-header { text-align: center; margin-bottom: 4rem; }
+  .how-header .section-sub { margin: 0 auto; }
+
+  .steps {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1rem;
+    position: relative;
+  }
+
+  .steps::before {
+    content: '';
+    position: absolute;
+    top: 2.2rem;
+    left: 10%;
+    right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+  }
+
+  .step { text-align: center; padding: 1rem 0.5rem; }
+
+  .step-num {
+    width: 48px; height: 48px;
+    background: var(--coral);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Fraunces', serif;
+    font-weight: 900;
+    font-size: 1.1rem;
+    margin: 0 auto 1.2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  .step-title { font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .step-desc { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── FEATURES ── */
+  .features { background: var(--off-white); color: var(--navy); }
+  .features h2 { color: var(--navy); }
+  .features .section-label { color: var(--coral); }
+
+  .features-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .feature-card {
+    background: var(--white);
+    border-radius: 16px;
+    padding: 2rem;
+    border: 1px solid rgba(15,27,61,0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .feature-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(15,27,61,0.1);
+  }
+
+  .feature-icon {
+    width: 48px; height: 48px;
+    background: var(--navy);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+
+  .feature-title { font-weight: 700; font-size: 1rem; color: var(--navy); margin-bottom: 0.5rem; }
+  .feature-desc { font-size: 0.88rem; color: #667; line-height: 1.6; }
+
+  /* ── INDUSTRIES ── */
+  .industries { background: var(--navy-mid); }
+
+  .industries-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .industry-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: background 0.2s, border-color 0.2s;
+    cursor: default;
+  }
+
+  .industry-card:hover {
+    background: rgba(255,255,255,0.07);
+    border-color: rgba(0,201,167,0.3);
+  }
+
+  .industry-icon { font-size: 1.8rem; margin-bottom: 0.8rem; }
+  .industry-name { font-weight: 600; font-size: 0.95rem; margin-bottom: 0.3rem; }
+  .industry-desc { font-size: 0.8rem; color: var(--gray); line-height: 1.5; }
+
+  /* ── PRICING ── */
+  .pricing { background: var(--navy); }
+  .pricing-header { text-align: center; margin-bottom: 4rem; }
+  .pricing-header .section-sub { margin: 0 auto; }
+
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 960px;
+    margin: 0 auto;
+  }
+
+  .pricing-card {
+    background: var(--navy-mid);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 2.5rem 2rem;
+    position: relative;
+    transition: transform 0.2s;
+  }
+
+  .pricing-card:hover { transform: translateY(-4px); }
+
+  .pricing-card.featured {
+    border-color: var(--coral);
+    background: linear-gradient(135deg, #1a2d5a, #0f1b3d);
+  }
+
+  .featured-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--coral);
+    color: var(--white);
+    padding: 0.3rem 1rem;
+    border-radius: 100px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    white-space: nowrap;
+  }
+
+  .plan-name { font-weight: 700; font-size: 0.85rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gray); margin-bottom: 1rem; }
+  .plan-price { font-family: 'Fraunces', serif; font-size: 3.5rem; font-weight: 900; line-height: 1; color: var(--white); }
+  .plan-price span { font-size: 1rem; font-family: 'DM Sans', sans-serif; font-weight: 400; color: var(--gray); }
+  .plan-setup { font-size: 0.82rem; color: var(--gray); margin: 0.5rem 0 1.5rem; }
+
+  .plan-divider { height: 1px; background: rgba(255,255,255,0.08); margin: 1.5rem 0; }
+
+  .plan-features { list-style: none; display: flex; flex-direction: column; gap: 0.7rem; margin-bottom: 2rem; }
+
+  .plan-features li {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.8);
+    display: flex;
+    align-items: flex-start;
+    gap: 0.6rem;
+    line-height: 1.4;
+  }
+
+  .plan-features li::before {
+    content: '✓';
+    color: var(--teal);
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+  }
+
+  .plan-btn {
+    display: block;
+    text-align: center;
+    padding: 0.85rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    text-decoration: none;
+    transition: opacity 0.2s, transform 0.2s;
+  }
+
+  .plan-btn:hover { opacity: 0.85; transform: translateY(-1px); }
+
+  .plan-btn-outline {
+    border: 1px solid rgba(255,255,255,0.2);
+    color: var(--white);
+  }
+
+  .plan-btn-filled {
+    background: var(--coral);
+    color: var(--white);
+    box-shadow: 0 4px 15px rgba(255,92,77,0.3);
+  }
+
+  /* ── TESTIMONIAL ── */
+  .testimonial {
+    background: var(--off-white);
+    color: var(--navy);
+    text-align: center;
+    padding: 5rem 6%;
+  }
+
+  .testimonial-quote {
+    font-family: 'Fraunces', serif;
+    font-size: clamp(1.4rem, 3vw, 2.2rem);
+    font-weight: 700;
+    font-style: italic;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    line-height: 1.4;
+    color: var(--navy);
+  }
+
+  .testimonial-author { font-size: 0.9rem; color: #667; font-weight: 500; }
+  .testimonial-author strong { color: var(--navy); display: block; font-size: 1rem; margin-bottom: 0.2rem; }
+
+  /* ── CTA ── */
+  .cta {
+    background: linear-gradient(135deg, var(--coral) 0%, #ff8c42 100%);
+    padding: 6rem 6%;
+    text-align: center;
+  }
+
+  .cta h2 { color: var(--white); margin-bottom: 1rem; }
+
+  .cta p {
+    color: rgba(255,255,255,0.85);
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cta-actions { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+
+  .btn-white {
+    background: var(--white);
+    color: var(--coral);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(0,0,0,0.2); }
+
+  .btn-outline-white {
+    border: 2px solid rgba(255,255,255,0.5);
+    color: var(--white);
+    padding: 0.9rem 2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    text-decoration: none;
+    transition: background 0.2s;
+  }
+
+  .btn-outline-white:hover { background: rgba(255,255,255,0.1); }
+
+  /* ── FOOTER ── */
+  footer {
+    background: #080f1e;
+    padding: 3rem 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .footer-logo {
+    font-family: 'Fraunces', serif;
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--white);
+  }
+
+  .footer-links { display: flex; gap: 2rem; list-style: none; }
+  .footer-links a { color: var(--gray); text-decoration: none; font-size: 0.85rem; transition: color 0.2s; }
+  .footer-links a:hover { color: var(--white); }
+
+  .footer-copy { color: var(--gray); font-size: 0.82rem; }
+
+  /* ── WHATSAPP FLOAT ── */
+  .wa-float {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 56px; height: 56px;
+    background: #25d366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none;
+    z-index: 99;
+    transition: transform 0.2s, box-shadow 0.2s;
+    font-size: 1.5rem;
+  }
+
+  .wa-float:hover {
+    transform: scale(1.1);
+    box-shadow: 0 8px 30px rgba(37,211,102,0.5);
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+
+  .reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .hero-visual { display: none; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .steps { grid-template-columns: repeat(2, 1fr); }
+    .steps::before { display: none; }
+    .features-grid { grid-template-columns: repeat(2, 1fr); }
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
+    .pricing-grid { grid-template-columns: 1fr; max-width: 400px; }
+    .nav-links { display: none; }
+  }
+
+  @media (max-width: 600px) {
+    .stats { grid-template-columns: repeat(2, 1fr); }
+    .features-grid { grid-template-columns: 1fr; }
+    .industries-grid { grid-template-columns: repeat(2, 1fr); }
+    footer { flex-direction: column; text-align: center; }
+    .footer-links { flex-wrap: wrap; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">
+    <span class="logo-dot"></span>
+    Buddha AI Solutions
+  </a>
+  <ul class="nav-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#industries">Industries</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact" class="nav-cta">Get Started</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">🤖 AI-Powered WhatsApp Automation</div>
+    <h1>Your business,<br><em>always on.</em></h1>
+    <p class="hero-sub">
+      WhatsApp AI bots that take orders, book appointments and answer enquiries 24/7 — so you never miss a customer again.
+    </p>
+    <div class="hero-actions">
+      <a href="#contact" class="btn-primary">Start Free Trial →</a>
+      <a href="#how" class="btn-secondary">See How It Works</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="chat-window">
+      <div class="chat-header">
+        <div class="chat-avatar">M</div>
+        <div>
+          <div class="chat-name">MomoGhar</div>
+          <div class="chat-status">🟢 Online</div>
+        </div>
+      </div>
+      <div class="chat-body">
+        <div class="msg msg-user">
+          Hi, can I order some food?
+          <div class="msg-time">6:42 PM ✓✓</div>
+        </div>
+        <div class="msg msg-bot">
+          Namaste! Welcome to MomoGhar 🥟 Here's our menu — what would you like to order?
+          <div class="msg-time">6:42 PM</div>
+        </div>
+        <div class="msg msg-user">
+          2 fried chicken momos please
+          <div class="msg-time">6:43 PM ✓✓</div>
+        </div>
+        <div class="msg msg-bot">
+          2x Fried Chicken Momo = $44. Confirm order? 😊
+          <div class="msg-time">6:43 PM</div>
+        </div>
+        <div class="msg msg-user">
+          Yes!
+          <div class="msg-time">6:43 PM ✓✓</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat">
+    <div class="stat-num">24/7</div>
+    <div class="stat-label">Always available</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">30%</div>
+    <div class="stat-label">Commission saved vs UberEats</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">3 days</div>
+    <div class="stat-label">Average setup time</div>
+  </div>
+  <div class="stat">
+    <div class="stat-num">$0</div>
+    <div class="stat-label">App download required</div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="how" id="how">
+  <div class="how-header reveal">
+    <div class="section-label">Simple Process</div>
+    <h2>How It Works</h2>
+    <p class="section-sub">Your customers message your WhatsApp number — the AI handles the rest.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <div class="step-title">Customer Messages</div>
+      <div class="step-desc">Customer sends a WhatsApp message to your business number</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">2</div>
+      <div class="step-title">AI Responds</div>
+      <div class="step-desc">AI greets customer, shows menu or services and takes their request</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">3</div>
+      <div class="step-title">Order Confirmed</div>
+      <div class="step-desc">AI confirms details, calculates total and sends confirmation</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">4</div>
+      <div class="step-title">Staff Notified</div>
+      <div class="step-desc">You receive an instant WhatsApp notification with full order details</div>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">5</div>
+      <div class="step-title">Auto Recorded</div>
+      <div class="step-desc">Every order saved to Google Sheets for tracking and reporting</div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features" id="features">
+  <div class="reveal">
+    <div class="section-label">What You Get</div>
+    <h2>Everything your<br>business needs</h2>
+    <p class="section-sub">Built for small and medium businesses that want to automate without the complexity.</p>
+  </div>
+  <div class="features-grid">
+    <div class="feature-card reveal">
+      <div class="feature-icon">🤖</div>
+      <div class="feature-title">AI Conversations</div>
+      <div class="feature-desc">Customers type naturally — the AI understands and responds like a real person, 24/7.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📋</div>
+      <div class="feature-title">Google Sheets Integration</div>
+      <div class="feature-desc">All orders tracked automatically. Update your menu or services anytime — no tech skills needed.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📱</div>
+      <div class="feature-title">Instant Staff Alerts</div>
+      <div class="feature-desc">Get a WhatsApp notification the moment a new order comes in — even at 2am.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🧠</div>
+      <div class="feature-title">Conversation Memory</div>
+      <div class="feature-desc">The AI remembers the full conversation — customers never have to repeat themselves.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Monthly Reports</div>
+      <div class="feature-desc">Automated PDF reports with orders, revenue and popular items delivered to your inbox.</div>
+    </div>
+    <div class="feature-card reveal">
+      <div class="feature-icon">🔒</div>
+      <div class="feature-title">Secure & Reliable</div>
+      <div class="feature-desc">Hosted on AWS with SSL encryption, automated backups and 99.9% uptime.</div>
+    </div>
+  </div>
+</section>
+
+<!-- INDUSTRIES -->
+<section class="industries" id="industries">
+  <div class="reveal">
+    <div class="section-label">Who We Serve</div>
+    <h2>Built for every<br>service business</h2>
+    <p class="section-sub">If customers message you to enquire, order or book — we can automate it.</p>
+  </div>
+  <div class="industries-grid">
+    <div class="industry-card reveal">
+      <div class="industry-icon">🍕</div>
+      <div class="industry-name">Restaurants</div>
+      <div class="industry-desc">Take orders, show menu, confirm pickup — skip the delivery app commissions</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon">🧹</div>
+      <div class="industry-name">Cleaning Services</div>
+      <div class="industry-desc">Book appointments, collect job details and send quotes automatically</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon">🔧</div>
+      <div class="industry-name">Plumbers</div>
+      <div class="industry-desc">Handle emergency bookings and enquiries even when you're on a job</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon">🔨</div>
+      <div class="industry-name">Carpenters</div>
+      <div class="industry-desc">Collect project details, send quotes and confirm bookings on autopilot</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon">💇</div>
+      <div class="industry-name">Hair Salons</div>
+      <div class="industry-desc">Appointments, pricing, reminders and reduce no-shows automatically</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon">🚗</div>
+      <div class="industry-name">Mechanics</div>
+      <div class="industry-desc">Bookings, job status updates and customer follow-ups without lifting a finger</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon">🏋️</div>
+      <div class="industry-name">Gyms & PTs</div>
+      <div class="industry-desc">Class bookings, membership enquiries and session reminders</div>
+    </div>
+    <div class="industry-card reveal">
+      <div class="industry-icon">🏠</div>
+      <div class="industry-name">Property & Real Estate</div>
+      <div class="industry-desc">Property enquiries, inspection bookings and lead qualification</div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing" id="pricing">
+  <div class="pricing-header reveal">
+    <div class="section-label">Transparent Pricing</div>
+    <h2>Simple plans,<br>no surprises</h2>
+    <p class="section-sub">One setup fee, then a flat monthly subscription. No commissions. No per-order fees.</p>
+  </div>
+  <div class="pricing-grid">
+    <div class="pricing-card reveal">
+      <div class="plan-name">Starter</div>
+      <div class="plan-price">$79<span>/month</span></div>
+      <div class="plan-setup">+ $399 one-time setup</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Up to 200 conversations/month</li>
+        <li>Basic FAQ & order taking</li>
+        <li>Google Sheets integration</li>
+        <li>Email notifications</li>
+        <li>1 WhatsApp number</li>
+        <li>Email support</li>
+      </ul>
+      <a href="#contact" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+    <div class="pricing-card featured reveal">
+      <div class="featured-badge">Most Popular</div>
+      <div class="plan-name">Business</div>
+      <div class="plan-price">$149<span>/month</span></div>
+      <div class="plan-setup">+ $499 one-time setup</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Up to 1,000 conversations/month</li>
+        <li>AI-powered conversations</li>
+        <li>Staff WhatsApp notifications</li>
+        <li>Monthly PDF reports</li>
+        <li>1 WhatsApp number</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="#contact" class="plan-btn plan-btn-filled">Get Started</a>
+    </div>
+    <div class="pricing-card reveal">
+      <div class="plan-name">Premium</div>
+      <div class="plan-price">$299<span>/month</span></div>
+      <div class="plan-setup">+ $799 one-time setup</div>
+      <div class="plan-divider"></div>
+      <ul class="plan-features">
+        <li>Unlimited conversations</li>
+        <li>Custom AI personality & tone</li>
+        <li>Multiple staff notifications</li>
+        <li>Weekly reports</li>
+        <li>2 WhatsApp numbers</li>
+        <li>3hrs onboarding + dedicated support</li>
+      </ul>
+      <a href="#contact" class="plan-btn plan-btn-outline">Get Started</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<div class="testimonial reveal">
+  <div class="testimonial-quote">
+    "Our WhatsApp bot takes orders even at midnight. Customers love it and we've stopped losing business to UberEats."
+  </div>
+  <div class="testimonial-author">
+    <strong>MomoGhar Restaurant</strong>
+    Glen Huntly, Melbourne
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta" id="contact">
+  <h2>Ready to automate<br>your business?</h2>
+  <p>Start with a free 30-day trial. No credit card required. Live in 3-5 days.</p>
+  <div class="cta-actions">
+    <a href="https://wa.me/61449679769?text=Hi%2C%20I%27m%20interested%20in%20a%20WhatsApp%20bot%20for%20my%20business" class="btn-white" target="_blank">
+      💬 Chat on WhatsApp
+    </a>
+    <a href="mailto:hello@buddhaaisolutions.com.au" class="btn-outline-white">
+      ✉️ Send an Email
+    </a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">Buddha AI Solutions</div>
+  <ul class="footer-links">
+    <li><a href="#how">How It Works</a></li>
+    <li><a href="#features">Features</a></li>
+    <li><a href="#pricing">Pricing</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="footer-copy">© 2026 Buddha AI Solutions · Melbourne, Australia</div>
+</footer>
+
+<!-- WhatsApp Float Button -->
+<a href="https://wa.me/61434502700?text=Hi%2C%20I%27m%20interested%20in%20a%20WhatsApp%20bot%20for%20my%20business" class="wa-float" target="_blank" title="Chat on WhatsApp">
+  💬
+</a>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // Smooth nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    const scrollY = window.scrollY;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 100;
+      const sectionHeight = section.offsetHeight;
+      const sectionId = section.getAttribute('id');
+      const navLink = document.querySelector(`.nav-links a[href="#${sectionId}"]`);
+      if (navLink) {
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+          navLink.style.color = '#ffffff';
+        } else {
+          navLink.style.color = 'rgba(255,255,255,0.7)';
+        }
+      }
+    });
+  });
+</script>
+</body>
+</html>
